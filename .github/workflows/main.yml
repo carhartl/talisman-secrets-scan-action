@@ -11,5 +11,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Ensure Talisman can operate on a valid revision range
       - name: Test action
         uses: ./
