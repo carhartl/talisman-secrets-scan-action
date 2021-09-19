@@ -11,5 +11,3 @@ jobs:
       - uses: actions/checkout@v2
       - name: Test talisman
         uses: ./
-        with:
-          args: refs/heads/main ${{ github.event.after }} refs/heads/main ${{ github.event.before }}

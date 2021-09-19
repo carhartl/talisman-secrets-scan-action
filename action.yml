@@ -1,7 +1,16 @@
 name: "Detect secrets with Talisman"
 description: "Scan an incoming range of commits for accidentally added secrets and sensitive information"
+inputs:
+  local-sha:
+    description: "The latest of the incoming commits"
+    required: false
+    default: ${{ github.event.after }}
+  remote-sha:
+    description: "The latest commit on the remote being pushed to"
+    required: false
+    default: ${{ github.event.before }}
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - refs/heads/main ${{ github.event.after }} refs/heads/main ${{ github.event.before }}
+    - refs/heads/main ${{ inputs.local-sha }} refs/heads/main ${{ inputs.remote-sha }}
