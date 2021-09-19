@@ -2,9 +2,9 @@ name: "Detect secrets with Talisman"
 description: "Scan an incoming range of commits for accidentally added secrets and sensitive information"
 inputs:
   local-ref:
-    description: "Ref pushed from"
+    description: "Ref that was updated"
     required: false
-    default: refs/heads/main
+    default: ${{ github.ref }}
   local-sha:
     description: "The latest of the incoming commits"
     required: false
@@ -12,7 +12,7 @@ inputs:
   remote-ref:
     description: "Ref that was updated"
     required: false
-    default: refs/heads/main
+    default: ${{ github.ref }}
   remote-sha:
     description: "The latest commit on the remote being pushed to"
     required: false
