@@ -22,3 +22,6 @@ runs:
   image: "Dockerfile"
   args:
     - ${{ inputs.local-ref }} ${{ inputs.local-sha }} ${{ inputs.remote-ref }} ${{ inputs.remote-sha }}
+branding:
+  icon: "lock"
+  color: "yellow"
