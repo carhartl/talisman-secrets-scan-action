@@ -1,0 +1,7 @@
+name: "Detect secrets with Talisman"
+description: "Scan an incoming range of commits for accidentally added secrets and sensitive information"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - refs/heads/main ${{ github.event.after }} refs/heads/main ${{ github.event.before }}
