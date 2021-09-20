@@ -15,5 +15,3 @@ jobs:
           fetch-depth: 0 # Ensure Talisman can operate on a valid revision range
       - name: Test action
         uses: ./
-        with:
-          remote-sha: 89df42eb70ebff472b384403e6b17e44391eba79
