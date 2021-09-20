@@ -5,7 +5,7 @@ This action uses [Talisman](https://thoughtworks.github.io/talisman/) to scan th
 ## Example usage
 
 ```yml
-uses: carhartl/talisman-secrets-scan-action@v1
+uses: carhartl/talisman-secrets-scan-action@v1.0
 ```
 
 ## Caveat
