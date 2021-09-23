@@ -7,12 +7,12 @@ This action uses [Talisman](https://thoughtworks.github.io/talisman/) to scan th
 ```yml
 steps:
   - name: Detect secrets with Talisman in incoming commits
-    uses: carhartl/talisman-secrets-scan-action@v1.0
+    uses: carhartl/talisman-secrets-scan-action@v1.0.1
 ```
 
 ## Caveat
 
-When using this along with the `actions/checkout@v2` step, you'll need to configure it to fetch the entire history:
+When using this along with the `actions/checkout@v2` step you'll need to configure it to avoid a too shallow clone:
 
 ```yml
 - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ When using this along with the `actions/checkout@v2` step, you'll need to config
     fetch-depth: 0
 ```
 
-Otherwise you'll run into talisman erroring out while it's trying to execute git with an invalid revision range:
+Otherwise you may run into Talisman erroring out while it's trying to execute git with an invalid revision range:
 
 ```
 time="2021-09-19T07:07:32Z" level=fatal msg="Git command execution failed" command="git diff 0c4a631e70056a95df1c235d238a80828e07cf9c..a32a5c7e1a3d250bf18a080a44a764d9b93b9690 --name-only --diff-filter=ACM" dir=/github/workspace error="exit status 128" output="fatal: Invalid revision range 0c4a631e70056a95df1c235d238a80828e07cf9c..a32a5c7e1a3d250bf18a080a44a764d9b93b9690\n"
