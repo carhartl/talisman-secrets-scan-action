@@ -25,3 +25,5 @@ Otherwise you may run into Talisman erroring out while it's trying to execute gi
 ```
 time="2021-09-19T07:07:32Z" level=fatal msg="Git command execution failed" command="git diff 0c4a631e70056a95df1c235d238a80828e07cf9c..a32a5c7e1a3d250bf18a080a44a764d9b93b9690 --name-only --diff-filter=ACM" dir=/github/workspace error="exit status 128" output="fatal: Invalid revision range 0c4a631e70056a95df1c235d238a80828e07cf9c..a32a5c7e1a3d250bf18a080a44a764d9b93b9690\n"
 ```
+
+foo
