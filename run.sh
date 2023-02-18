@@ -30,7 +30,7 @@ prep_release() {
     git push origin main
     git tag -a "$1" -m "Release $1"
     git push --tags
-    _success "Released $1!"
+    _success "Tag for release $1 available!"
   fi
 }
 
