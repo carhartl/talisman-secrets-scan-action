@@ -26,9 +26,9 @@ prep_release() {
   read -r answer
   if [ "$answer" = "y" ]; then
     git add --update
-    git commit -m "Prepare for $1 release"
+    git commit -S -m "Prepare for $1 release"
     git push origin main
-    git tag -a "$1" -m "Release $1"
+    git tag -s "$1" -m "Release $1"
     git push --tags
     _success "Tag for release $1 available!"
   fi
