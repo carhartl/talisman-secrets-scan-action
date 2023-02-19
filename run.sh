@@ -21,6 +21,10 @@ prep_release() {
   _user "Prepare release draft on GitHub? "
   read -r answer
   if [ "$answer" = "y" ]; then
+    if ! command -v gh > /dev/null 2>&1; then
+      _fail "Script requires GitHub CLI: \`brew install gh\`"
+      exit 1
+    fi
     git add --update
     git commit -S -m "Prepare for $1 release"
     git push origin main
