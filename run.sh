@@ -6,10 +6,6 @@ _user() {
   printf "\033[0;33m%s\033[0m" "$1"
 }
 
-_success() {
-  printf "\033[0;32m==> %s\033[0m\n\n" "$1"
-}
-
 _fail() {
   printf "\033[0;31m==> %s\033[0m\n\n" "$1"
 }
@@ -22,7 +18,7 @@ prep_release() {
 
   grep -rlZE 'v\d+\.\d+\.\d+' --exclude=Dockerfile --exclude-dir=.git . | xargs sed -i '' 's/v[0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}/'"$1"'/g'
 
-  _user "Push? "
+  _user "Prepare release draft on GitHub? "
   read -r answer
   if [ "$answer" = "y" ]; then
     git add --update
@@ -30,7 +26,8 @@ prep_release() {
     git push origin main
     git tag -s "$1" -m "Release $1"
     git push --tags
-    _success "Tag for release $1 available!"
+    gh release create --draft --latest --title "$1" --verify-tag
+    gh release view "$1" --web
   fi
 }
 
@@ -38,7 +35,7 @@ _help() {
   echo "Usage: ./run.sh [command]"
   echo ""
   echo "Available commands:"
-  echo "prep-release <version>                Prepare new release"
+  echo "prep-release <version>                Prepare new release draft"
 }
 
 cmd="${1:-}"
